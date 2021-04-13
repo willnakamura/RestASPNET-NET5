@@ -7,11 +7,11 @@ using Microsoft.Extensions.Hosting;
 using RestASPNET_NET5.Model.Context;
 using RestASPNET_NET5.Business;
 using RestASPNET_NET5.Business.Implementations;
-using RestASPNET_NET5.Repository;
-using RestASPNET_NET5.Repository.Implementations;
 using Serilog;
 using System;
 using System.Collections.Generic;
+using RestASPNET_NET5.Repository;
+using RestASPNET_NET5.Repository.Generic;
 
 namespace RestASPNET_NET5
 {
@@ -48,8 +48,11 @@ namespace RestASPNET_NET5
             services.AddApiVersioning();
 
             //Dependence Injection
-            services.AddScoped<IRepositoryBusiness, PersonBusinessImplementation>();
-            services.AddScoped<IPersonRepository, PersonRepositoryImplementation>();
+            services.AddScoped<IPersonBusiness, PersonBusinessImplementation>();
+            services.AddScoped<IBookBusiness, BookBusinessImplementation>();
+
+            services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

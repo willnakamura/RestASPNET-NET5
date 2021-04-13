@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using RestASPNET_NET5.Model;
 using RestASPNET_NET5.Business;
+using RestASPNET_NET5.Data.VO;
 
 namespace RestASPNET_NET5.Controller
 {
@@ -11,9 +11,9 @@ namespace RestASPNET_NET5.Controller
     public class PersonController : ControllerBase
     {
         private readonly ILogger<PersonController> _logger;
-        private IRepositoryBusiness _personBusiness;
+        private IPersonBusiness _personBusiness;
 
-        public PersonController(ILogger<PersonController> logger, IRepositoryBusiness personBusiness)
+        public PersonController(ILogger<PersonController> logger, IPersonBusiness personBusiness)
         {
             _logger = logger;
             _personBusiness = personBusiness;
@@ -34,17 +34,17 @@ namespace RestASPNET_NET5.Controller
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] Person person)
+        public IActionResult Post([FromBody] PersonVO personVO)
         {
-            if (person == null) return BadRequest();
-            return Ok(_personBusiness.Create(person));
+            if (personVO == null) return BadRequest();
+            return Ok(_personBusiness.Create(personVO));
         }
 
         [HttpPut]
-        public IActionResult Put([FromBody] Person person)
+        public IActionResult Put([FromBody] PersonVO personVO)
         {
-            if (person == null) return BadRequest();
-            return Ok(_personBusiness.Update(person));
+            if (personVO == null) return BadRequest();
+            return Ok(_personBusiness.Update(personVO));
         }
 
         [HttpDelete("{id}")]
