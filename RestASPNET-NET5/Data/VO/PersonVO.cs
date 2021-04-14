@@ -1,7 +1,11 @@
 ﻿
+using RestASPNET_NET5.Hypermedia;
+using RestASPNET_NET5.Hypermedia.Abstract;
+using System.Collections.Generic;
+
 namespace RestASPNET_NET5.Data.VO
 {
-    public class PersonVO
+    public class PersonVO :ISupportsHyperMedia
     {
         public long Id { get; set; }
 
@@ -12,6 +16,7 @@ namespace RestASPNET_NET5.Data.VO
         public string Address { get; set; }
 
         public string Gender { get; set; }
+        public List<HyperMediaLink> Links { get; set; } = new List<HyperMediaLink>();
 
         /*
          *CUSTOM SERIALIZATION

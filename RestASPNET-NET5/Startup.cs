@@ -13,6 +13,8 @@ using System.Collections.Generic;
 using RestASPNET_NET5.Repository;
 using RestASPNET_NET5.Repository.Generic;
 using Microsoft.Net.Http.Headers;
+using RestASPNET_NET5.Hypermedia.Filters;
+using RestASPNET_NET5.Hypermedia.Enricher;
 
 namespace RestASPNET_NET5
 {
@@ -55,6 +57,12 @@ namespace RestASPNET_NET5
             })
                 .AddXmlSerializerFormatters();
 
+            var filterOptions = new HyperMediaFilterOptions();
+            filterOptions.ContentResponseEnricherList.Add(new PersonEnricher());
+            filterOptions.ContentResponseEnricherList.Add(new BookEnricher());
+
+            services.AddSingleton(filterOptions);
+
             services.AddApiVersioning();
 
             //Dependence Injection
@@ -89,6 +97,7 @@ namespace RestASPNET_NET5
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapControllerRoute("DefaultApi", "{controller=values}/{id?}");
             });
         }
 
