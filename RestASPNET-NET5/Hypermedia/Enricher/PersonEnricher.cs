@@ -16,7 +16,7 @@ namespace RestASPNET_NET5.Hypermedia.Enricher
             string link = GetLink(content.Id, urlHelper, path);
 
             content.Links.Add(new HyperMediaLink()
-            { 
+            {
                 Action = HttpActionVerb.GET,
                 Href = link,
                 Rel = RelationType.self,
@@ -35,6 +35,13 @@ namespace RestASPNET_NET5.Hypermedia.Enricher
                 Href = link,
                 Rel = RelationType.self,
                 Type = ResponseTypeFormat.DefaultPut
+            });
+            content.Links.Add(new HyperMediaLink()
+            {
+                Action = HttpActionVerb.PATCH,
+                Href = link,
+                Rel = RelationType.self,
+                Type = ResponseTypeFormat.DefaultPatch
             });
             content.Links.Add(new HyperMediaLink()
             {
