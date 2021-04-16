@@ -11,7 +11,7 @@ namespace RestASPNET_NET5.Model
         public string FirstName { get; set; }
 
         [Column("last_name")]
-        public string LasName { get; set; }
+        public string LastName { get; set; }
 
         [Column("address")]
         public string Address { get; set; }

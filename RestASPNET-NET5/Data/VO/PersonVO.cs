@@ -11,7 +11,7 @@ namespace RestASPNET_NET5.Data.VO
 
         public string FirstName { get; set; }
 
-        public string LasName { get; set; }
+        public string LastName { get; set; }
 
         public string Address { get; set; }
 

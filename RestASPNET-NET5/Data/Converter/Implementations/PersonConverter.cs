@@ -15,7 +15,7 @@ namespace RestASPNET_NET5.Data.Converter.Implementations
             {
                 Id = origin.Id,
                 FirstName = origin.FirstName,
-                LasName = origin.LasName,
+                LastName = origin.LastName,
                 Address = origin.Address,
                 Gender = origin.Gender
             };
@@ -28,7 +28,7 @@ namespace RestASPNET_NET5.Data.Converter.Implementations
             {
                 Id = origin.Id,
                 FirstName = origin.FirstName,
-                LasName = origin.LasName,
+                LastName = origin.LastName,
                 Address = origin.Address,
                 Gender = origin.Gender
             };
