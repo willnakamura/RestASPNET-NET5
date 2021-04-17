@@ -97,10 +97,12 @@ namespace RestASPNET_NET5
             var connection = Configuration["MySQLConnection:MySQLConnectionString"];
             services.AddDbContext<MySqlContext>(options => options.UseMySql(connection));
 
+            /*-----------
             if (Environment.IsDevelopment())
             {
                 MigrateDatabase(connection);
             }
+            */
 
             services.AddMvc(options =>
             {
